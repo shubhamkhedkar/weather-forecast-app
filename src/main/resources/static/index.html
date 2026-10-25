@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weather Forecast</title><link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script></head>
+<body>
+<header><h1>☀️ Weather Forecast</h1>
+ <div class="controls">
+  <div class="search"><input id="q" placeholder="Search city…" autocomplete="off"><ul id="suggest"></ul></div>
+  <button id="loc" title="Use my location">📍 My location</button>
+  <button id="unit">°C / °F</button>
+ </div>
+ <div id="recent"></div>
+</header>
+<main>
+ <div id="status"></div>
+ <section id="current" class="card hidden"></section>
+ <section class="card hidden" id="hourlyCard"><h2>Next 48 hours</h2><div class="chartwrap"><canvas id="chart"></canvas></div><div id="hourly" class="hscroll"></div></section>
+ <section class="card hidden" id="dailyCard"><h2>7-day forecast</h2><div id="daily" class="grid"></div></section>
+ <section class="card hidden" id="aqCard"><h2>Air quality</h2><div id="aq"></div></section>
+</main>
+<footer>Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo.com</a> (CC BY 4.0) — Forecast, Geocoding &amp; Air Quality APIs.</footer>
+<script src="app.js"></script></body></html>
