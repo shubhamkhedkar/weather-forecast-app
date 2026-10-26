@@ -1,5 +1,5 @@
 # ---- Build stage ----
-FROM eclipse-temurin:17-jdk AS build
+FROM eclipse-temurin:25-jdk AS build
 WORKDIR /app
 COPY .mvn .mvn
 COPY mvnw pom.xml ./
@@ -8,7 +8,7 @@ COPY src src
 RUN ./mvnw -q -B -DskipTests package
 
 # ---- Runtime stage ----
-FROM eclipse-temurin:17-jre
+FROM eclipse-temurin:25-jre
 RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/* \
  && useradd -r -u 1001 appuser
 WORKDIR /app
