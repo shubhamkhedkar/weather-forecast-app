@@ -1,0 +1,10 @@
+services:
+  weather:
+    build: .
+    image: ghcr.io/shubhamkhedkar/weather-forecast-app:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - CACHE_TTL_SECONDS=600
+    restart: unless-stopped

@@ -1,0 +1,19 @@
+{
+  "name": "weather-forecast-app-frontend",
+  "private": true,
+  "description": "Lint tooling for the static frontend in src/main/resources/static",
+  "scripts": {
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
+    "lint:js": "eslint src/main/resources/static",
+    "lint:css": "stylelint \"src/main/resources/static/**/*.css\"",
+    "lint:html": "htmlhint \"src/main/resources/static/**/*.html\""
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "eslint": "^9.13.0",
+    "globals": "^15.11.0",
+    "htmlhint": "^1.1.4",
+    "stylelint": "^16.10.0",
+    "stylelint-config-standard": "^36.0.1"
+  }
+}

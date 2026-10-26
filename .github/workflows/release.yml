@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build jar & create GitHub Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - name: Build & test
+        run: |
+          chmod +x mvnw
+          ./mvnw -B -ntp verify
+      - name: Prepare artifacts
+        run: |
+          mkdir dist
+          cp target/weather-forecast-app-*.jar "dist/weather-forecast-app-${GITHUB_REF_NAME}.jar"
+          (cd dist && sha256sum *.jar > SHA256SUMS.txt)
+      - uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          prerelease: ${{ contains(github.ref_name, '-') }}
+          files: |
+            dist/*.jar
+            dist/SHA256SUMS.txt
