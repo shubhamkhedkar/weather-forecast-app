@@ -1,5 +1,5 @@
 package com.example.weather;
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.*;
@@ -18,7 +18,7 @@ public class OpenMeteoService {
   }
   private static String r(double v){ return String.format(Locale.ROOT,"%.3f",v); }
   public JsonNode search(String q){
-    String uri = UriComponentsBuilder.fromHttpUrl(geoUrl).queryParam("name",q).queryParam("count",8)
+    String uri = UriComponentsBuilder.fromUriString(geoUrl).queryParam("name",q).queryParam("count",8)
         .queryParam("language","en").queryParam("format","json").encode().toUriString();
     return fetch("search:"+q.toLowerCase(Locale.ROOT), uri);
   }

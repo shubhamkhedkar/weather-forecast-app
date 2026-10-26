@@ -1,9 +1,9 @@
 package com.example.weather;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
@@ -11,7 +11,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 @WebMvcTest(WeatherController.class)
 class WeatherControllerTest {
-  @Autowired MockMvc mvc; @MockBean OpenMeteoService svc; ObjectMapper om=new ObjectMapper();
+  @Autowired MockMvc mvc; @MockitoBean OpenMeteoService svc; ObjectMapper om=new ObjectMapper();
   @Test void search() throws Exception {
     when(svc.search("Pune")).thenReturn(om.readTree("{\"results\":[{\"name\":\"Pune\"}]}"));
     mvc.perform(get("/api/search").param("q","Pune")).andExpect(status().isOk()).andExpect(jsonPath("$.results[0].name").value("Pune"));
