@@ -9,11 +9,11 @@
     "lint:html": "htmlhint \"src/main/resources/static/**/*.html\""
   },
   "devDependencies": {
-    "@eslint/js": "^9.13.0",
-    "eslint": "^9.13.0",
-    "globals": "^15.11.0",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.13.0",
+    "globals": "^17.13.0",
     "htmlhint": "^1.1.4",
-    "stylelint": "^16.10.0",
-    "stylelint-config-standard": "^36.0.1"
+    "stylelint": "^17.16.0",
+    "stylelint-config-standard": "^40.0.0"
   }
 }
