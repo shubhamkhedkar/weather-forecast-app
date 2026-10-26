@@ -1,6 +1,7 @@
 package com.example.weather;
 import org.junit.jupiter.api.*;
 import org.springframework.http.*;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestClient;
 import static org.assertj.core.api.Assertions.*;
